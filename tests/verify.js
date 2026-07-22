@@ -49,10 +49,13 @@ const forbidden = ['潮汐', '闪念贝壳', 'APPSO', 'GeeLark', '求职意向',
         tel: Boolean(document.querySelector('a[href="tel:19865923963"]')),
         mail: Boolean(document.querySelector('a[href="mailto:1986763447@qq.com"]')),
         pdf: Boolean(document.querySelector('a[href="./黄炯鹏_通用简历.pdf"]')),
+        hiddenEntries: [...document.querySelectorAll('.entry')]
+          .filter(entry => Number.parseFloat(getComputedStyle(entry).opacity) < 1).length,
       };
     }, { required, forbidden });
     if (result.missing.length || result.forbidden.length || result.overflow
-      || result.brokenAnchors.length || !result.tel || !result.mail || !result.pdf) {
+      || result.brokenAnchors.length || !result.tel || !result.mail || !result.pdf
+      || result.hiddenEntries > 0) {
       errors.push(`${viewport.name}: ${JSON.stringify(result)}`);
     }
     await page.screenshot({ path: path.join(root, `preview-${viewport.name}.png`), fullPage: true });

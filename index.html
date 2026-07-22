@@ -108,6 +108,7 @@
     }
     .hero-statement {
       margin: 40px 0 0;
+      max-width: 12em;
       font-family: var(--serif);
       font-size: clamp(28px, 4vw, 48px);
       font-weight: 750;
@@ -227,9 +228,6 @@
     footer { padding: 24px 0; background: var(--ink); color: rgba(255,255,255,.56); font-size: 12px; }
     footer .shell { display: flex; justify-content: space-between; gap: 20px; }
 
-    .js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
-    .js .reveal.is-visible { opacity: 1; transform: none; }
-
     @media (max-width: 760px) {
       .shell { width: min(100% - 36px, 1120px); }
       .nav { min-height: 62px; }
@@ -258,13 +256,11 @@
 
     @media print {
       .hero { min-height: auto; }
-      .js .reveal { opacity: 1 !important; transform: none !important; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
     }
   </style>
-  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
   <header class="hero" id="top">
@@ -280,7 +276,7 @@
       <div>
         <p class="eyebrow">Personal introduction · 2026</p>
         <h1>黄炯鹏</h1>
-        <p class="hero-statement">把复杂问题整理成<br>可以推进的方案</p>
+        <p class="hero-statement">把复杂问题整理成可以推进的方案</p>
       </div>
       <div class="capabilities" aria-label="能力概览">
         <p class="eyebrow">What I do</p>
@@ -443,16 +439,5 @@
     <div class="shell"><span>© 2026 黄炯鹏</span><span>Personal introduction · Guangzhou</span></div>
   </footer>
 
-  <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
-  </script>
 </body>
 </html>
