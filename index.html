@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="黄炯鹏的个人介绍：项目、实习经历与联系方式。">
+  <meta name="theme-color" content="#f4efe5">
+  <title>黄炯鹏｜个人介绍</title>
+  <style>
+    :root {
+      --paper: #f4efe5;
+      --paper-deep: #e9e0d1;
+      --ink: #27231f;
+      --muted: #665e55;
+      --light: #8b8175;
+      --line: #cfc3b2;
+      --accent: #a74934;
+      --accent-dark: #813522;
+      --white: #fffdf8;
+      --serif: "Songti SC", "STSong", "Noto Serif CJK SC", Georgia, serif;
+      --sans: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-underline-offset: 4px; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    strong { color: var(--ink); font-weight: 750; }
+    .shell { width: min(1120px, calc(100% - 48px)); margin: 0 auto; }
+    .eyebrow {
+      margin: 0;
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .19em;
+      text-transform: uppercase;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 72px;
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-name { font-family: var(--serif); font-weight: 800; text-decoration: none; letter-spacing: .12em; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a {
+      position: relative;
+      color: var(--muted);
+      font-size: 13px;
+      text-decoration: none;
+    }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: -7px;
+      left: 0;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .2s ease;
+    }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(167, 73, 52, .18);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero::before { width: 460px; height: 460px; top: -220px; right: -140px; }
+    .hero::after { width: 250px; height: 250px; top: -115px; right: -36px; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(260px, .6fr);
+      gap: 72px;
+      align-items: end;
+      padding: clamp(90px, 13vh, 150px) 0 clamp(72px, 10vh, 116px);
+    }
+    h1 {
+      margin: 26px 0 0;
+      font-family: var(--serif);
+      font-size: clamp(64px, 9vw, 118px);
+      font-weight: 900;
+      line-height: .94;
+      letter-spacing: .08em;
+    }
+    .hero-statement {
+      margin: 40px 0 0;
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 750;
+      line-height: 1.35;
+    }
+    .hero-statement::before {
+      content: "";
+      display: block;
+      width: 54px;
+      height: 4px;
+      margin-bottom: 27px;
+      background: var(--accent);
+    }
+    .capabilities {
+      padding: 4px 0 4px 28px;
+      border-left: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 16px;
+    }
+    .capabilities p:last-child { margin: 14px 0 0; line-height: 2.05; }
+    .credential-strip {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px 20px;
+      padding: 22px 0 24px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .credential-strip span:not(:first-child)::before,
+    .credential-strip a::before { content: "·"; margin-right: 20px; color: var(--accent); }
+    .credential-strip a { color: var(--accent-dark); text-decoration-color: rgba(167, 73, 52, .4); }
+
+    .index-band { background: var(--ink); color: var(--white); }
+    .index-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      min-height: 132px;
+    }
+    .index-link {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding: 28px 32px;
+      border-right: 1px solid rgba(255, 255, 255, .16);
+      text-decoration: none;
+      transition: background .2s ease, color .2s ease;
+    }
+    .index-link:last-child { border-right: 0; }
+    .index-link:hover { background: var(--accent); }
+    .index-number { color: #d5917e; font-size: 11px; letter-spacing: .15em; }
+    .index-name { font-family: var(--serif); font-size: 21px; font-weight: 700; }
+    .index-arrow { font-size: 20px; }
+
+    .content-section { padding: 112px 0; }
+    .content-section:nth-of-type(even) { background: var(--white); }
+    .section-head {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 24px;
+      margin-bottom: 70px;
+      align-items: start;
+    }
+    .section-number { color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: .18em; }
+    h2 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(38px, 5vw, 64px);
+      line-height: 1.1;
+      letter-spacing: .03em;
+    }
+    .section-intro { margin: 22px 0 0; max-width: 700px; color: var(--muted); font-size: 16px; }
+
+    .entries { border-top: 1px solid var(--line); }
+    .entry {
+      display: grid;
+      grid-template-columns: minmax(250px, .82fr) minmax(0, 1.18fr);
+      gap: 56px;
+      padding: 54px 0 58px;
+      border-bottom: 1px solid var(--line);
+    }
+    .entry-kicker { margin: 0 0 11px; color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: .12em; }
+    .entry h3 { margin: 0; font-family: var(--serif); font-size: 27px; line-height: 1.35; }
+    .entry-meta { margin: 14px 0 0; color: var(--light); font-size: 13px; }
+    .entry-body { color: var(--muted); }
+    .entry-body > p:first-child { margin-top: 0; }
+    .entry-body ul { margin: 20px 0 0; padding: 0; list-style: none; }
+    .entry-body li { position: relative; margin: 12px 0; padding-left: 22px; }
+    .entry-body li::before {
+      content: "";
+      position: absolute;
+      top: .78em;
+      left: 0;
+      width: 8px;
+      height: 1px;
+      background: var(--accent);
+    }
+    .entry-links { display: flex; flex-wrap: wrap; gap: 12px 22px; margin-top: 26px; }
+    .entry-links a { color: var(--accent-dark); font-size: 13px; font-weight: 700; text-decoration-color: rgba(167, 73, 52, .35); }
+
+    .contact { padding: 112px 0 124px; background: var(--paper-deep); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: end; }
+    .contact h2 { max-width: 710px; margin-top: 22px; font-size: clamp(34px, 4.6vw, 59px); }
+    .contact-links { display: flex; flex-direction: column; align-items: flex-start; gap: 17px; }
+    .contact-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 16px;
+      text-decoration: none;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 5px;
+    }
+    .contact-links a:hover { color: var(--accent-dark); border-color: var(--accent); }
+    footer { padding: 24px 0; background: var(--ink); color: rgba(255,255,255,.56); font-size: 12px; }
+    footer .shell { display: flex; justify-content: space-between; gap: 20px; }
+
+    .js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .js .reveal.is-visible { opacity: 1; transform: none; }
+
+    @media (max-width: 760px) {
+      .shell { width: min(100% - 36px, 1120px); }
+      .nav { min-height: 62px; }
+      .nav-links { gap: 17px; }
+      .hero { min-height: auto; }
+      .hero::before { width: 280px; height: 280px; top: -150px; right: -130px; }
+      .hero::after { display: none; }
+      .hero-grid { grid-template-columns: 1fr; gap: 52px; padding: 76px 0 62px; }
+      h1 { font-size: clamp(52px, 18vw, 72px); letter-spacing: .04em; }
+      .hero-statement { margin-top: 34px; font-size: 29px; }
+      .capabilities { padding-left: 20px; }
+      .credential-strip { display: grid; gap: 8px; padding: 18px 0 24px; }
+      .credential-strip span:not(:first-child)::before,
+      .credential-strip a::before { content: none; }
+      .index-grid { grid-template-columns: 1fr; }
+      .index-link { min-height: 92px; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.16); }
+      .index-link:last-child { border-bottom: 0; }
+      .content-section { padding: 76px 0; }
+      .section-head { grid-template-columns: 1fr; gap: 12px; margin-bottom: 46px; }
+      .entry { grid-template-columns: 1fr; gap: 24px; padding: 40px 0 44px; }
+      .entry h3 { font-size: 23px; }
+      .contact { padding: 82px 0 90px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 45px; }
+      footer .shell { flex-direction: column; gap: 4px; }
+    }
+
+    @media print {
+      .hero { min-height: auto; }
+      .js .reveal { opacity: 1 !important; transform: none !important; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
+    }
+  </style>
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <header class="hero" id="top">
+    <nav class="shell nav" aria-label="页面导航">
+      <a class="nav-name" href="#top">黄炯鹏</a>
+      <div class="nav-links">
+        <a href="#projects">项目</a>
+        <a href="#experience">经历</a>
+        <a href="#contact">联系</a>
+      </div>
+    </nav>
+    <div class="shell hero-grid">
+      <div>
+        <p class="eyebrow">Personal introduction · 2026</p>
+        <h1>黄炯鹏</h1>
+        <p class="hero-statement">把复杂问题整理成<br>可以推进的方案</p>
+      </div>
+      <div class="capabilities" aria-label="能力概览">
+        <p class="eyebrow">What I do</p>
+        <p>需求梳理与 MVP<br>信息架构与知识系统<br>跨团队项目推进</p>
+      </div>
+    </div>
+    <div class="shell credential-strip">
+      <span>广东技术师范大学 · 机械电子工程 · 2026 届</span>
+      <span>CET-6</span>
+      <span>计算机二级</span>
+      <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&amp;__biz=MzkwODcwNjI0OA==" target="_blank" rel="noreferrer">公众号「牛仔鸡」· 7 篇原创 ↗</a>
+    </div>
+  </header>
+
+  <div class="index-band" aria-label="内容索引">
+    <div class="shell index-grid">
+      <a class="index-link" href="#projects"><span><span class="index-number">01 / PROJECTS</span><br><span class="index-name">三个核心项目</span></span><span class="index-arrow">↘</span></a>
+      <a class="index-link" href="#experience"><span><span class="index-number">02 / EXPERIENCE</span><br><span class="index-name">三段实习经历</span></span><span class="index-arrow">↘</span></a>
+      <a class="index-link" href="#contact"><span><span class="index-number">03 / CONTACT</span><br><span class="index-name">进一步交流</span></span><span class="index-arrow">↘</span></a>
+    </div>
+  </div>
+
+  <main>
+    <section class="content-section" id="projects">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div class="section-number">01 / PROJECTS</div>
+          <div><h2>项目经历</h2><p class="section-intro">从真实问题出发，完成需求梳理、方案拆解、最小验证和持续交付。</p></div>
+        </div>
+        <div class="entries">
+          <article class="entry reveal">
+            <div>
+              <p class="entry-kicker">独立开发 · 2026.05—至今</p>
+              <h3>火大——厨房库存管理微信小程序</h3>
+              <p class="entry-meta">真实问题 → 最小方案 → 使用验证</p>
+            </div>
+            <div class="entry-body">
+              <p>从情侣共用厨房时的库存信息断层出发，用 AI 辅助完成前端与云开发后端，初步跑通从需求到验证的完整过程。</p>
+              <ul>
+                <li><strong>需求与范围：</strong>梳理计划做菜、计划买菜、记录采购与做饭等核心场景，把复杂想法收敛为可验证的 MVP。</li>
+                <li><strong>实现与迭代：</strong>搭建 <strong>6 个页面</strong>覆盖核心链路，通过真实使用逐页测试并迭代十余版，持续修正逻辑、异常状态与交互问题。</li>
+              </ul>
+              <div class="entry-links"><a href="https://mp.weixin.qq.com/s/NfSBXsojC9gI_hilSq35YA" target="_blank" rel="noreferrer">阅读项目复盘 ↗</a></div>
+            </div>
+          </article>
+
+          <article class="entry reveal">
+            <div>
+              <p class="entry-kicker">独立构建 · 2026.01—至今</p>
+              <h3>个人语音日记 → AI 本地知识库</h3>
+              <p class="entry-meta">信息增长 → 分层架构 → 按需检索</p>
+            </div>
+            <div class="entry-body">
+              <p>基于长期积累的个人内容，解决“记录持续增长但难以回看与转化”的真实使用问题。</p>
+              <ul>
+                <li><strong>内容与架构：</strong>以 <strong>364 篇、118 万字</strong>语音日记为基础，设计 Raw、DiaryWiki、ResourceWiki、AIReady、NotebookLM、TopicPacks 与 Schema 七层信息架构。</li>
+                <li><strong>运行机制：</strong>建立增量同步、清洗归档、按需检索、交叉引用与反馈更新规则，使记录能够被持续查询、分析和复用。</li>
+              </ul>
+              <div class="entry-links">
+                <a href="https://mp.weixin.qq.com/s/YWcdVnIcSs-rEtuhYiwCmw" target="_blank" rel="noreferrer">阅读方法论文章 ↗</a>
+                <a href="https://mp.weixin.qq.com/s/oC7BTcelAo34e6uqgwz2TA" target="_blank" rel="noreferrer">AI 给自己写的说明书 ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="entry reveal">
+            <div>
+              <p class="entry-kicker">项目负责人 · 2024.05—2025.11</p>
+              <h3>汉语桥——广师大 × 印尼西普特拉大学</h3>
+              <p class="entry-meta">跨文化协作 · 全国金奖</p>
+            </div>
+            <div class="entry-body">
+              <p>负责国际交流项目的规划、协同与交付，并将关键流程沉淀为可复用的项目资产。</p>
+              <ul>
+                <li><strong>规划与协同：</strong>运用 WBS 拆解任务并沉淀 <strong>10+ 份 SOP</strong>，协调两校约 <strong>200 名师生</strong>参与，项目获新文科创新大赛全国金奖。</li>
+                <li><strong>落地与传承：</strong>策划并落地 <strong>100+ 人</strong>线下闭幕式，主导 12 期核心交流活动，并将流程移交给后续团队延续。</li>
+              </ul>
+              <div class="entry-links">
+                <a href="https://mp.weixin.qq.com/s/_J_UAwUYfYGJ9O9sYUb9aw" target="_blank" rel="noreferrer">首期总结 ↗</a>
+                <a href="https://mp.weixin.qq.com/s/UBvyGG2m-c7YISI1lyUAfg" target="_blank" rel="noreferrer">第二期总结 ↗</a>
+                <a href="https://mp.weixin.qq.com/s/VBSlFvzPN-inxtn4V0QEmQ" target="_blank" rel="noreferrer">第三期招募 ↗</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section" id="experience">
+      <div class="shell">
+        <div class="section-head reveal">
+          <div class="section-number">02 / EXPERIENCE</div>
+          <div><h2>实习经历</h2><p class="section-intro">三段跨行业经历，让我分别接触产品交付、项目推进和业务运营的真实现场。</p></div>
+        </div>
+        <div class="entries">
+          <article class="entry reveal">
+            <div>
+              <p class="entry-kicker">2026.05—2026.06 · 广州</p>
+              <h3>海鹚科技</h3>
+              <p class="entry-meta">低代码实施工程师 · 医疗 SaaS</p>
+            </div>
+            <div class="entry-body">
+              <p>参与医疗 SaaS 模块从需求评审到上线交付的完整链路。</p>
+              <ul>
+                <li>参与健康宣教、科室管理等模块的需求评审，将医院业务目标与使用流程拆解为页面、字段及交互任务，协助推进需求立项。</li>
+                <li>基于低代码系统完成列表页与详情页搭建，配置业务逻辑和后端 API，并参与<strong>测试、问题修正及 HIS 联调上线</strong>。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="entry reveal">
+            <div>
+              <p class="entry-kicker">2026.01—2026.04 · 惠州</p>
+              <h3>利元亨智能装备</h3>
+              <p class="entry-meta">项目助理（PM）</p>
+            </div>
+            <div class="entry-body">
+              <p>在锂电设备制造项目中负责启动资料、排期和跨部门进度协调。</p>
+              <ul>
+                <li>独立负责新项目启动流程，整理立项资料与技术交底文件，拆解关键节点、责任人与交付物，协助制定排期并提前识别风险。</li>
+                <li>每日跟踪 <strong>20+ 项</strong>跨部门任务，累计输出 <strong>40+ 份</strong>结构化进度看板，推动设计、采购与生产环节的异常反馈和延期事项闭环。</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="entry reveal">
+            <div>
+              <p class="entry-kicker">2025.07—2025.11 · 佛山</p>
+              <h3>佛山侨晨建材</h3>
+              <p class="entry-meta">外贸业务 / 跨境电商运营</p>
+            </div>
+            <div class="entry-body">
+              <p>在 4—5 人团队中同时参与平台运营、订单流程和海外客户需求跟进。</p>
+              <ul>
+                <li>分析阿里国际站 <strong>20+ 家竞品</strong>的标题、关键词与详情页表达，协同完成 <strong>400+ 新品</strong>上架，核心产品详情页点击率提升约 <strong>200%</strong>。</li>
+                <li>梳理询盘确认、打样下单、验货到出货物流的订单 SOP，累计制作 <strong>50+ 份 PI</strong>，并接待展厅海外客户、跟进产品与交付需求。</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section id="contact" class="contact">
+    <div class="shell contact-grid reveal">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2>如果这些经历与你正在做的事有关，欢迎联系我。</h2>
+      </div>
+      <div class="contact-links">
+        <a href="tel:19865923963">电话 · 19865923963</a>
+        <a href="mailto:1986763447@qq.com">邮箱 · 1986763447@qq.com</a>
+        <a href="./黄炯鹏_通用简历.pdf" download>下载 PDF 简历 ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="shell"><span>© 2026 黄炯鹏</span><span>Personal introduction · Guangzhou</span></div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
+  </script>
+</body>
+</html>
