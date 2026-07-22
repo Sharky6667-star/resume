@@ -19,6 +19,6 @@
 & 'C:\Users\Sharky\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe' '.\tests\verify.js'
 ```
 
-验证覆盖桌面端、390px 移动端、必需内容、品牌残留、锚点、电话、邮箱、PDF 下载与横向溢出。
+验证覆盖桌面端、390px 移动端、必需内容、品牌残留、锚点、电话、邮箱、PDF 下载、横向溢出，以及滚动后的吸顶导航位置。
 
 本地修改不会自动更新线上地址；提交并推送到 `Sharky6667-star/resume` 后，GitHub Pages 才会更新。
