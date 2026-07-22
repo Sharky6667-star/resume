@@ -5,7 +5,7 @@ const { chromium } = require('playwright');
 
 const root = path.resolve(__dirname, '..');
 const htmlPath = path.join(root, 'index.html');
-const pdfPath = path.join(root, '黄炯鹏_通用简历.pdf');
+const pdfPath = path.join(root, '黄炯鹏简历.pdf');
 const required = [
   '黄炯鹏',
   '把复杂问题整理成可以推进的方案',
@@ -48,14 +48,16 @@ const forbidden = ['潮汐', '闪念贝壳', 'APPSO', 'GeeLark', '求职意向',
           .filter(href => href !== '#' && !document.querySelector(href)),
         tel: Boolean(document.querySelector('a[href="tel:19865923963"]')),
         mail: Boolean(document.querySelector('a[href="mailto:1986763447@qq.com"]')),
-        pdf: Boolean(document.querySelector('a[href="./黄炯鹏_通用简历.pdf"]')),
+        pdf: Boolean(document.querySelector('a[href="./黄炯鹏简历.pdf"]')),
         hiddenEntries: [...document.querySelectorAll('.entry')]
           .filter(entry => Number.parseFloat(getComputedStyle(entry).opacity) < 1).length,
+        contactHeadingPx: Number.parseFloat(getComputedStyle(document.querySelector('.contact h2')).fontSize),
       };
     }, { required, forbidden });
     if (result.missing.length || result.forbidden.length || result.overflow
       || result.brokenAnchors.length || !result.tel || !result.mail || !result.pdf
-      || result.hiddenEntries > 0) {
+      || result.hiddenEntries > 0
+      || result.contactHeadingPx > (viewport.name === 'mobile' ? 31 : 48)) {
       errors.push(`${viewport.name}: ${JSON.stringify(result)}`);
     }
     await page.screenshot({ path: path.join(root, `preview-${viewport.name}.png`), fullPage: true });
