@@ -40,6 +40,8 @@ const forbidden = ['潮汐', '闪念贝壳', 'APPSO', 'GeeLark', '求职意向',
     const result = await page.evaluate(({ required, forbidden }) => {
       const text = document.body.innerText;
       const internalLinks = [...document.querySelectorAll('a[href^="#"]')];
+      const indexBand = document.querySelector('.index-band');
+      const indexStyle = getComputedStyle(indexBand);
       return {
         missing: required.filter(item => !text.includes(item)),
         forbidden: forbidden.filter(item => text.includes(item)),
@@ -52,12 +54,20 @@ const forbidden = ['潮汐', '闪念贝壳', 'APPSO', 'GeeLark', '求职意向',
         hiddenEntries: [...document.querySelectorAll('.entry')]
           .filter(entry => Number.parseFloat(getComputedStyle(entry).opacity) < 1).length,
         contactHeadingPx: Number.parseFloat(getComputedStyle(document.querySelector('.contact h2')).fontSize),
+        stickyNav: indexStyle.position === 'sticky' && Number.parseFloat(indexStyle.top) === 0,
+        stickyNavHeight: indexBand.getBoundingClientRect().height,
       };
     }, { required, forbidden });
+    await page.evaluate(() => window.scrollTo(0, document.querySelector('#projects').offsetTop + 160));
+    await page.waitForTimeout(80);
+    result.stickyTopAfterScroll = await page.$eval('.index-band', element => element.getBoundingClientRect().top);
     if (result.missing.length || result.forbidden.length || result.overflow
       || result.brokenAnchors.length || !result.tel || !result.mail || !result.pdf
       || result.hiddenEntries > 0
-      || result.contactHeadingPx > (viewport.name === 'mobile' ? 31 : 48)) {
+      || result.contactHeadingPx > (viewport.name === 'mobile' ? 31 : 48)
+      || !result.stickyNav
+      || Math.abs(result.stickyTopAfterScroll) > 1
+      || (viewport.name === 'mobile' && result.stickyNavHeight > 96)) {
       errors.push(`${viewport.name}: ${JSON.stringify(result)}`);
     }
     await page.screenshot({ path: path.join(root, `preview-${viewport.name}.png`), fullPage: true });
