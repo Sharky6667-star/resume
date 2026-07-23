@@ -8,7 +8,6 @@ const htmlPath = path.join(root, 'index.html');
 const pdfPath = path.join(root, '黄炯鹏简历.pdf');
 const required = [
   '黄炯鹏',
-  '产品经理｜可接受实习 / 初级',
   '产品与项目实践',
   '实习经历',
   '我的更多输出',
@@ -19,9 +18,16 @@ const required = [
   '海鹚科技',
   '利元亨智能装备',
   '佛山侨晨建材',
+];
+const forbidden = [
+  '潮汐',
+  '冥想',
+  'chaoxi-resume',
+  '自荐 · 产品经理',
+  '求职意向',
+  '产品经理｜可接受实习 / 初级',
   '面向产品经理岗位',
 ];
-const forbidden = ['潮汐', '冥想', 'chaoxi-resume'];
 const expectedNav = ['#projects', '#internship', '#more', '#contact'];
 
 (async () => {
